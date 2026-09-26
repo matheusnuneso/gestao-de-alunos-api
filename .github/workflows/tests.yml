@@ -11,12 +11,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      MONGODB_URI: mongodb://127.0.0.1:27017/nova-gestao-de-alunos-test
-      BASE_URL: http://127.0.0.1:3000
-      ADMIN_EMAIL: admin@escola.com
-      ADMIN_SENHA: admin123
-      ALUNO_EMAIL: bruno.lima@example.com
-      ALUNO_SENHA: 123456
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+      ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+      ADMIN_SENHA: ${{ secrets.ADMIN_SENHA }}
+      ALUNO_EMAIL: ${{ secrets.ALUNO_EMAIL }}
+      ALUNO_SENHA: ${{ secrets.ALUNO_SENHA }}
 
     services:
       mongodb:
