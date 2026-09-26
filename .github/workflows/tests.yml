@@ -1,12 +1,12 @@
-name: Testes de API
+name: Testes da API gestão de alunos
 
 on:
-  workflow_dispatch:
-  
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '44 7 * * 5'
 
 jobs:
   test:
@@ -36,7 +36,15 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Iniciar API
+        run: |
+          npm start > server.log 2>&1 &
+          for tentativa in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3000/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
       - name: Executar testes
         run: npm test
-        env:
-          MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test
