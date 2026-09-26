@@ -1,12 +1,11 @@
 name: Testes da API gestão de alunos
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: '44 7 * * 5'
 
 jobs:
   test:
@@ -34,7 +33,7 @@ jobs:
           cache: npm
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm install
 
       - name: Iniciar API
         run: |
