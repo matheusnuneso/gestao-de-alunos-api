@@ -10,6 +10,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: mongodb://127.0.0.1:27017/nova-gestao-de-alunos-test
+      BASE_URL: http://127.0.0.1:3000
+      ADMIN_EMAIL: admin@escola.com
+      ADMIN_SENHA: admin123
+      ALUNO_EMAIL: bruno.lima@example.com
+      ALUNO_SENHA: 123456
 
     services:
       mongodb:
