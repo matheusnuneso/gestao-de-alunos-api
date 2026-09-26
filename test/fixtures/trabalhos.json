@@ -1,0 +1,10 @@
+[
+  {
+    "testTitle": "aluno registra uma entrega de trabalho",
+    "alunoId": "aluno-bruno-lima",
+    "disciplinaId": "disciplina-matematica",
+    "titulo": "Lista de Exercícios 2",
+    "descricao": "Resolução dos exercícios de 21 a 40 do capítulo 2.",
+    "statusCodeEsperado": 201
+  }
+]
