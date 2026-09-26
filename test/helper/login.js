@@ -1,4 +1,4 @@
-import request from 'supertest';
+import { api } from './api.js';
 import app from '../../src/app.js';
 
 import 'dotenv/config';
@@ -12,7 +12,7 @@ export async function comTokenDeAluno() {
 }
 
 export async function getToken(emailUser, passUser) {
-    const loginResposta = await request(app)
+    const loginResposta = await api()
         .post('/api/auth/login')
         .set('Content-Type', 'application/json')
         .send({ 
