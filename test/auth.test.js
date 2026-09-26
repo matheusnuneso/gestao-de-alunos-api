@@ -6,9 +6,6 @@ import app from '../src/app.js';
 import { comTokenDeAdmin, comTokenDeAluno } from './helper/login.js';
 
 describe('POST /api/auth/login', () => {
-  after(async () => {
-    await mongoose.connection.close();
-  });
 
   it('deve retornar 200 e um token quando o admin informar e-mail e senha corretos', async () => {
     const token = await comTokenDeAluno();
