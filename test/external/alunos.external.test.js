@@ -3,11 +3,12 @@ import { comTokenDeAdmin } from '../helper/login.js';
 import { api } from '../helper/api.js';
 import Aluno from '../../src/models/aluno.model.js';
 import alunos from '../fixtures/alunos.json' with { type: 'json' };
-import mongoose from 'mongoose';
-import app from '../../src/app.js';
 
+let token;
 
 beforeEach(async () => {
+    token = await comTokenDeAdmin();
+
     await Aluno.deleteOne({
         $or: [
             { email: 'matheus.nunes@example.com' },
@@ -19,7 +20,7 @@ beforeEach(async () => {
 describe('Alunos External', () => {
     for (const caso of alunos) {
         it(caso.testTitle, async () => {
-            const token = await comTokenDeAdmin();
+            
             const cadastroAlunoResposta = await api()
                 .post('/api/admin/alunos')
                 .set('Content-Type', 'application/json')
